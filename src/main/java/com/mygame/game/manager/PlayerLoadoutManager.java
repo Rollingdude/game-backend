@@ -34,14 +34,25 @@ public class PlayerLoadoutManager {
         this.playerLoadoutEntityMapper = playerLoadoutEntityMapper;
     }
 
+    /**
+     * get player loadout list data
+     *
+     * @param playerId playerId
+     * @return player load out list entities
+     */
     public List<PlayerLoadoutEntity> getByPlayerId(Long playerId) {
         LambdaQueryWrapper<PlayerLoadoutEntity> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(PlayerLoadoutEntity::getPlayerId, playerId).eq(PlayerLoadoutEntity::getStatus, 1);
         return playerLoadoutEntityMapper.selectList(lambdaQueryWrapper);
     }
 
+    /**
+     * update the loadout data by it's id
+     *
+     * @param loadoutEntity entity to update
+     * @return whether successfully updated
+     */
     public boolean updateById(PlayerLoadoutEntity loadoutEntity) {
-        LambdaQueryWrapper<PlayerLoadoutEntity> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         try {
             playerLoadoutEntityMapper.updateById(loadoutEntity);
             return true;

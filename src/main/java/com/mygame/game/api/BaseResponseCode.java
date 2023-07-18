@@ -1,9 +1,14 @@
 package com.mygame.game.api;
 
-public enum BaseResponseCode implements IResponseCode{
-    SUCCESS(200,"success"),
-    FAILED(500,"failed")
-    ;
+/**
+ * base response code implementation
+ *
+ * @author Lynx
+ * @since 2023、07、18
+ */
+public enum BaseResponseCode implements IResponseCode {
+    SUCCESS(200, "success"),
+    FAILURE(500, "failure");
 
     private final Integer code;
 

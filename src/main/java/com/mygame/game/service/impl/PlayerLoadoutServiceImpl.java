@@ -2,6 +2,7 @@ package com.mygame.game.service.impl;
 
 import com.mygame.game.entity.PlayerLoadoutEntity;
 import com.mygame.game.manager.PlayerLoadoutManager;
+import com.mygame.game.model.dto.LoadoutUpdateDTO;
 import com.mygame.game.model.vo.PlayerLoadoutVO;
 import com.mygame.game.service.IPlayerLoadoutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,14 @@ public class PlayerLoadoutServiceImpl implements IPlayerLoadoutService {
             playerLoadoutVO.setLoadoutIndex(playerLoadoutEntity.getLoadoutIndex());
         });
         return loadoutVOs;
+    }
+
+    @Override
+    public void UpdateLoadout(LoadoutUpdateDTO updateDTO) {
+        PlayerLoadoutEntity playerLoadoutEntity = new PlayerLoadoutEntity();
+        playerLoadoutEntity.setId(updateDTO.getId());
+        playerLoadoutEntity.setName(updateDTO.getName());
+        playerLoadoutEntity.setContent(updateDTO.getConent());
+        playerLoadoutManager.updateById(playerLoadoutEntity);
     }
 }

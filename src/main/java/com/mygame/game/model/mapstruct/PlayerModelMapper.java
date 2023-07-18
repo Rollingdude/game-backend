@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 /**
- * User model mapper,manipulate user related properties copy
+ * User model mapper,manipulate coping of player related properties
  *
  * @author Lynx
  * @since 2023/07/14
@@ -34,6 +34,7 @@ public interface PlayerModelMapper {
 
     /**
      * converts a user register dto to entity
+     *
      * @param registerDTO register params
      * @return UserEntity
      */
