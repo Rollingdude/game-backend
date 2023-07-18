@@ -17,12 +17,15 @@ import java.util.List;
  * @since 2023/07/18
  */
 @Service
-public class PlayerLoadoutService implements IPlayerLoadoutService {
+public class PlayerLoadoutServiceImpl implements IPlayerLoadoutService {
 
+    /**
+     * playerLoadoutManager
+     */
     private final PlayerLoadoutManager playerLoadoutManager;
 
     @Autowired
-    public PlayerLoadoutService(PlayerLoadoutManager playerLoadoutManager) {
+    public PlayerLoadoutServiceImpl(PlayerLoadoutManager playerLoadoutManager) {
         this.playerLoadoutManager = playerLoadoutManager;
     }
 
@@ -32,6 +35,7 @@ public class PlayerLoadoutService implements IPlayerLoadoutService {
         List<PlayerLoadoutVO> loadoutVOs = new ArrayList<>(loadoutEntities.size());
         loadoutEntities.forEach(playerLoadoutEntity -> {
             PlayerLoadoutVO playerLoadoutVO = new PlayerLoadoutVO();
+            playerLoadoutVO.setId(playerLoadoutEntity.getPlayerId());
             playerLoadoutVO.setLoadoutName(playerLoadoutEntity.getName());
             playerLoadoutVO.setContent(playerLoadoutEntity.getContent());
             playerLoadoutVO.setLoadoutIndex(playerLoadoutEntity.getLoadoutIndex());

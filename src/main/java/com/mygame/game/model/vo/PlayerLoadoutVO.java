@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public class PlayerLoadoutVO {
 
+    private Long id;
+
     /**
      * the actual load out content data
      */
