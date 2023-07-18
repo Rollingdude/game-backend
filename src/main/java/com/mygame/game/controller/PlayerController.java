@@ -1,5 +1,6 @@
 package com.mygame.game.controller;
 
+import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
 import com.mygame.game.model.vo.PlayerVO;
 import com.mygame.game.service.IPlayerService;
@@ -32,7 +33,7 @@ public class PlayerController {
      * @return User Rsp
      */
     @GetMapping("/{playerId}")
-    public Response<PlayerVO> getPlayer(@PathVariable("playerId") Long playerId) {
+    public IResponse<PlayerVO> getPlayer(@PathVariable("playerId") Long playerId) {
         return Response.success(playerService.getUserInfo(playerId));
     }
 }

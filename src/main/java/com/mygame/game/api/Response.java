@@ -1,11 +1,19 @@
 package com.mygame.game.api;
 
-import lombok.Data;
+import lombok.Setter;
 
 import java.util.Objects;
 
-@Data
-public class Response<T> {
+/**
+ * base response api
+ *
+ * @param <T>
+ * @author Lynx
+ * @since 2023/07/18
+ */
+@Setter
+public class Response<T> implements IResponse<T> {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -22,6 +30,21 @@ public class Response<T> {
      * response data
      */
     private T data;
+
+    @Override
+    public T getData() {
+        return data;
+    }
+
+    @Override
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String getMsg() {
+        return msg;
+    }
 
     public static <T> Response<T> success() {
         return restResult(null, BaseResponseCode.SUCCESS.getCode(), BaseResponseCode.SUCCESS.getMsg());

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mygame.game.mapper.PlayerLoadoutEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mygame.game.entity.PlayerLoadoutEntity" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="player_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="loadout_index" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="status" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="create_time" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="update_time" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, player_id, content, loadout_index, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_player_loadout
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_player_loadout
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mygame.game.entity.PlayerLoadoutEntity" >
+    insert into tb_player_loadout (id, player_id, content, 
+      loadout_index, status, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{playerId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, 
+      #{loadoutIndex,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mygame.game.entity.PlayerLoadoutEntity" >
+    insert into tb_player_loadout
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="playerId != null" >
+        player_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="loadoutIndex != null" >
+        loadout_index,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="playerId != null" >
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="loadoutIndex != null" >
+        #{loadoutIndex,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mygame.game.entity.PlayerLoadoutEntity" >
+    update tb_player_loadout
+    <set >
+      <if test="playerId != null" >
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="loadoutIndex != null" >
+        loadout_index = #{loadoutIndex,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mygame.game.entity.PlayerLoadoutEntity" >
+    update tb_player_loadout
+    set player_id = #{playerId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      loadout_index = #{loadoutIndex,jdbcType=TINYINT},
+      status = #{status,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
