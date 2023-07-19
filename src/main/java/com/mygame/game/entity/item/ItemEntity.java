@@ -19,6 +19,8 @@ public class ItemEntity extends BaseEntity {
      */
     private String ItemName;
 
+    private String alias;
+
     /**
      * item type
      */

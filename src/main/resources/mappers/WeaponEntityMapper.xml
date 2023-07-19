@@ -6,9 +6,9 @@
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="alias" property="alias" jdbcType="VARCHAR" />
     <result column="item_type" property="itemType" jdbcType="INTEGER" />
-    <result column="static_mesh_assets" property="staticMeshAssets" jdbcType="VARCHAR" />
-    <result column="skeletal_mesh_assets" property="skeletalMeshAssets" jdbcType="VARCHAR" />
-    <result column="weapon_category" property="weaponCategory" jdbcType="TINYINT" />
+    <result column="static_mesh_assets" property="staticMeshAssetsPath" jdbcType="VARCHAR" />
+    <result column="skeletal_mesh_assets" property="skeletalMeshAsset" jdbcType="VARCHAR" />
+    <result column="weapon_category" property="weaponCategory" jdbcType="VARCHAR" />
     <result column="concrete" property="concrete" jdbcType="TINYINT" />
     <result column="base_clip_capacity" property="baseClipCapacity" jdbcType="INTEGER" />
     <result column="base_clip_size" property="baseClipSize" jdbcType="INTEGER" />

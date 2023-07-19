@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class WeaponEntity extends ItemEntity {
 
-    private Byte weaponCategory;
+    private String weaponCategory;
 
     private Byte concrete;
 
