@@ -2,6 +2,9 @@ package com.mygame.game.enums;
 
 import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * item type enum
  *
@@ -10,29 +13,44 @@ import lombok.Getter;
  */
 @Getter
 public enum ItemType {
+    NONE("NONE","none"),
+    WEAPON("WEAPON", "Weapon"),
+    AMMO("AMMO", "Ammo"),
+    WEAPON_ATTACHMENT("WEAPON_ATTACHMENT", "Weapon attachment"),
+    HEALTH("HEALTH", "Health"),
+    ARMOR("ARMOR", "Armor"),
+    BUFF("BUFF", "Buff"),
+    COSMETICS("COSMETICS", "CosmeticItem"),
+    WEAPON_PART("WEAPON_PART", "Weapon part");
 
-    NON((byte) 0, "none"),
-    WEAPON((byte) 1, "Weapon"),
-    AMMO((byte) 2, "Ammo"),
-    WEAPON_ATTACHMENT((byte) 3, "Weapon attachment"),
-    HEALTH((byte) 4, "Health"),
-    ARMOR((byte) 5, "Armor"),
-    BUFF((byte) 6, "Buff"),
-    COSMETICS((byte) 7, "CosmeticItem"),
-    WEAPON_PART((byte) 7, "CosmeticItem");
+    /**
+     * cached the value with hashmap
+     */
+    private static final Map<String, ItemType> cachedMap = new HashMap<>(16);
+
+    static {
+        ItemType[] values = ItemType.values();
+        for (ItemType value : values) {
+            cachedMap.put(value.getValue(), value);
+        }
+    }
 
     /**
      * the code
      */
-    private final byte code;
+    private final String value;
 
     /**
      * desc
      */
     private final String desc;
 
-    ItemType(byte code, String desc) {
-        this.code = code;
+    public static ItemType getByValue(String value) {
+        return cachedMap.get(value);
+    }
+
+    ItemType(String value, String desc) {
+        this.value = value;
         this.desc = desc;
     }
 }

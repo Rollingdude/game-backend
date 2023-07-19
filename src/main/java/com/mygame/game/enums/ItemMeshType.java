@@ -1,6 +1,7 @@
 package com.mygame.game.enums;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * item visual mesh type
@@ -14,25 +15,41 @@ public enum ItemMeshType {
     /**
      * none
      */
-    NONE((byte) 0, "None"),
+    NONE("None", "None"),
 
     /**
      * static visual mesh
      */
-    STATIC_MESH((byte) 0, "Static mesh"),
+    STATIC_MESH("STATIC_MESH", "Static mesh"),
 
     /**
      * skeletal visual mesh
      */
-    SKELETAL_MESH((byte) 0, "Skeletal mesh"),
+    SKELETAL_MESH("SKELETAL_MESH", "Skeletal mesh"),
     ;
 
-    private final byte code;
+    private final String value;
 
     private final String desc;
 
-    ItemMeshType(byte code, String desc) {
-        this.code = code;
+    /**
+     * find the enum instance by value
+     *
+     * @param value the value to find
+     * @return corresponding enum value
+     */
+    public static ItemMeshType getItemMeshTypeByValue(String value) {
+        ItemMeshType[] values = ItemMeshType.values();
+        for (ItemMeshType itemMeshType : values) {
+            if (StringUtils.equals(value, itemMeshType.getValue())) {
+                return itemMeshType;
+            }
+        }
+        return null;
+    }
+
+    ItemMeshType(String value, String desc) {
+        this.value = value;
         this.desc = desc;
     }
 }
