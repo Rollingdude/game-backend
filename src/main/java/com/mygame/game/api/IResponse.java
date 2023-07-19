@@ -9,9 +9,25 @@ import java.io.Serializable;
  * @since 2023/07/18
  */
 public interface IResponse<T> extends Serializable {
-   T getData();
 
-   int getCode();
+    /**
+     * returns the data contained by this response
+     *
+     * @return Data
+     */
+    T getData();
 
-   String getMsg();
+    /**
+     * returns the response code
+     *
+     * @return code
+     */
+    int getCode();
+
+    /**
+     * returns the response msg
+     *
+     * @return response message
+     */
+    String getMsg();
 }
