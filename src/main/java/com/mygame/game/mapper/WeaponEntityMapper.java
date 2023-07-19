@@ -1,17 +1,16 @@
 package com.mygame.game.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mygame.game.entity.WeaponEntity;
+import org.mapstruct.Mapper;
 
-public interface WeaponEntityMapper {
+/**
+ * WeaponEntityMapper
+ *
+ * @author Lynx
+ * @since 2023/07/19
+ */
+@Mapper
+public interface WeaponEntityMapper extends BaseMapper<WeaponEntity> {
     int deleteByPrimaryKey(Long id);
-
-    int insert(WeaponEntity record);
-
-    int insertSelective(WeaponEntity record);
-
-    WeaponEntity selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(WeaponEntity record);
-
-    int updateByPrimaryKey(WeaponEntity record);
 }
