@@ -12,8 +12,8 @@ import lombok.EqualsAndHashCode;
  * @since 2023/07/19
  */
 @EqualsAndHashCode(callSuper = true)
-@Data
 @TableName("tb_weapons")
+@Data
 public class WeaponEntity extends ItemEntity {
 
     private Byte weaponCategory;
