@@ -1,10 +1,9 @@
-package com.mygame.game.service.impl;
+package com.mygame.game.service;
 
 import com.mygame.game.entity.PlayerLoadoutEntity;
 import com.mygame.game.manager.PlayerLoadoutManager;
 import com.mygame.game.model.dto.LoadoutUpdateDTO;
 import com.mygame.game.model.vo.PlayerLoadoutVO;
-import com.mygame.game.service.IPlayerLoadoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.List;
  * @since 2023/07/18
  */
 @Service
-public class PlayerLoadoutServiceImpl implements IPlayerLoadoutService {
+public class PlayerLoadoutService {
 
     /**
      * playerLoadoutManager
@@ -26,11 +25,10 @@ public class PlayerLoadoutServiceImpl implements IPlayerLoadoutService {
     private final PlayerLoadoutManager playerLoadoutManager;
 
     @Autowired
-    public PlayerLoadoutServiceImpl(PlayerLoadoutManager playerLoadoutManager) {
+    public PlayerLoadoutService(PlayerLoadoutManager playerLoadoutManager) {
         this.playerLoadoutManager = playerLoadoutManager;
     }
 
-    @Override
     public List<PlayerLoadoutVO> getPlayerLoadouts(Long playerId) {
         List<PlayerLoadoutEntity> loadoutEntities = playerLoadoutManager.getByPlayerId(playerId);
         List<PlayerLoadoutVO> loadoutVOs = new ArrayList<>(loadoutEntities.size());
@@ -44,7 +42,6 @@ public class PlayerLoadoutServiceImpl implements IPlayerLoadoutService {
         return loadoutVOs;
     }
 
-    @Override
     public void UpdateLoadout(LoadoutUpdateDTO updateDTO) {
         PlayerLoadoutEntity playerLoadoutEntity = new PlayerLoadoutEntity();
         playerLoadoutEntity.setId(updateDTO.getId());

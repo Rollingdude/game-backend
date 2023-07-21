@@ -4,7 +4,7 @@ import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
 import com.mygame.game.model.dto.LoadoutUpdateDTO;
 import com.mygame.game.model.vo.PlayerLoadoutVO;
-import com.mygame.game.service.IPlayerLoadoutService;
+import com.mygame.game.service.PlayerLoadoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +22,10 @@ import java.util.List;
 @RestController("/loadout")
 public class PlayerLoadoutController {
 
-    private final IPlayerLoadoutService playerLoadoutService;
+    private final PlayerLoadoutService playerLoadoutService;
 
     @Autowired
-    public PlayerLoadoutController(IPlayerLoadoutService playerLoadoutService) {
+    public PlayerLoadoutController(PlayerLoadoutService playerLoadoutService) {
         this.playerLoadoutService = playerLoadoutService;
     }
 
