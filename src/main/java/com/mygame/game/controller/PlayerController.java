@@ -3,7 +3,7 @@ package com.mygame.game.controller;
 import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
 import com.mygame.game.model.vo.PlayerVO;
-import com.mygame.game.service.IPlayerService;
+import com.mygame.game.service.PlayerService;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/player")
 public class PlayerController {
 
-    private final IPlayerService playerService;
+    private final PlayerService playerService;
 
-    public PlayerController(IPlayerService playerService) {
+    public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
     }
 
@@ -26,7 +26,7 @@ public class PlayerController {
     /**
      * get user info by userId
      *
-     * @param userId userId
+     * @param playerId playerId
      * @return User Rsp
      */
     @GetMapping("/getByPlayerId")

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mygame.game.mapper.WeaponPartEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.mygame.game.entity.WeaponPartEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="alias" property="alias" jdbcType="VARCHAR" />
+    <result column="item_type" property="itemType" jdbcType="VARCHAR" />
+    <result column="static_mesh_path" property="staticMeshPath" jdbcType="VARCHAR" />
+    <result column="skeletal_mesh_path" property="skeletalMeshPath" jdbcType="VARCHAR" />
+    <result column="attachment_sockets" property="attachmentSockets" jdbcType="VARCHAR" />
+    <result column="dedicate_weapon_id" property="dedicateWeaponId" jdbcType="BIGINT" />
+    <result column="concrete" property="concrete" jdbcType="TINYINT" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, item_name, alias, item_type, static_mesh_path, skeletal_mesh_path, attachment_sockets,
+    dedicate_weapon_id, concrete, desc, create_time, update_time, status
+  </sql>
+</mapper>
