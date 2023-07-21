@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mygame.game.entity.PlayerLoadoutEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.ibatis.annotations.Mapper;
+
 
 /**
  * mapper interface for player loadout
@@ -12,7 +14,9 @@ import lombok.EqualsAndHashCode;
  * @author Lynx
  * @since 2023/07/18
  */
+@Mapper
 public interface PlayerLoadoutEntityMapper extends BaseMapper<PlayerLoadoutEntity> {
+
     int deleteByPrimaryKey(Long id);
 
     int insert(PlayerLoadoutEntity record);

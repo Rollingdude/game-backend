@@ -4,10 +4,7 @@ import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
 import com.mygame.game.model.vo.PlayerVO;
 import com.mygame.game.service.IPlayerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * User Controller
@@ -32,8 +29,8 @@ public class PlayerController {
      * @param userId userId
      * @return User Rsp
      */
-    @GetMapping("/{playerId}")
-    public IResponse<PlayerVO> getPlayer(@PathVariable("playerId") Long playerId) {
+    @GetMapping("/getByPlayerId")
+    public IResponse<PlayerVO> getPlayer(@RequestParam("playerId") Long playerId) {
         return Response.success(playerService.getUserInfo(playerId));
     }
 }

@@ -2,7 +2,7 @@ package com.mygame.game.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mygame.game.entity.WeaponEntity;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * WeaponEntityMapper
@@ -12,5 +12,4 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface WeaponEntityMapper extends BaseMapper<WeaponEntity> {
-    int deleteByPrimaryKey(Long id);
 }
