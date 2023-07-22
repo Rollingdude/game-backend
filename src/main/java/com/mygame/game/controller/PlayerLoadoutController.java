@@ -6,10 +6,7 @@ import com.mygame.game.model.dto.LoadoutUpdateDTO;
 import com.mygame.game.model.vo.PlayerLoadoutVO;
 import com.mygame.game.service.PlayerLoadoutService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,8 @@ import java.util.List;
  * @author Lynx
  * @since 2023/07/18
  */
-@RestController("/loadout")
+@RestController
+@RequestMapping("/loadout")
 public class PlayerLoadoutController {
 
     private final PlayerLoadoutService playerLoadoutService;
