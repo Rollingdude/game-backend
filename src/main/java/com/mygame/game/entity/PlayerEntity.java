@@ -48,4 +48,9 @@ public class PlayerEntity extends BaseEntity{
      * the nickname of the player on that platform
      */
     private String platformNickname;
+
+    /**
+     * which load out dose the player preferred
+     */
+    private Byte preferredLoadoutIndex;
 }
