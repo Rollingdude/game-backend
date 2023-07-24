@@ -1,20 +1,15 @@
-package com.mygame.game.entity;
+package com.mygame.game.model.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.mygame.game.entity.item.ItemEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
- * weapon entity
+ * Weapon VO class
  *
- * @author Lynx
- * @since 2023/07/19
+ * @author Lynx.Luo
+ * @since 2023/07/24
  */
-@EqualsAndHashCode(callSuper = true)
-@TableName("tb_weapon")
 @Data
-public class WeaponEntity extends ItemEntity {
+public class WeaponVO extends ItemVO {
 
     private String weaponCategory;
 

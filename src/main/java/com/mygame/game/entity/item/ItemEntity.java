@@ -64,4 +64,9 @@ public class ItemEntity extends BaseEntity {
      * the item anim class
      */
     private String ItemAnimClassPath;
+
+    /**
+     * display icons assets path used by ui
+     */
+    private String iconAssetsPath;
 }

@@ -1,9 +1,12 @@
 package com.mygame.game.manager;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mygame.game.entity.WeaponEntity;
 import com.mygame.game.mapper.WeaponEntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * weapon entity management
@@ -29,5 +32,17 @@ public class WeaponManager {
      */
     public WeaponEntity getById(Long id) {
         return weaponEntityMapper.selectById(id);
+    }
+
+
+    /**
+     * get all the weapon entities
+     *
+     * @return all weapon entities
+     */
+    public List<WeaponEntity> getAll() {
+        LambdaQueryWrapper<WeaponEntity> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(WeaponEntity::getStatus, 1);
+        return weaponEntityMapper.selectList(lambdaQueryWrapper);
     }
 }

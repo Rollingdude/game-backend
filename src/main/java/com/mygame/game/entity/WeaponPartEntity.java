@@ -23,11 +23,16 @@ public class WeaponPartEntity extends ItemEntity {
     /**
      * the weapon id this part dedicated for
      */
-    private Long dedicateWeaponId;
+    private Long dedicatedWeaponId;
 
     /**
      * indicates if this is a concrete Weapon part
      */
     private Byte concrete;
+
+    /**
+     * the buff items applied to this weapon part
+     */
+    private String buffItemIds;
 
 }

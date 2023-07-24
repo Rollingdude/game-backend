@@ -9,7 +9,7 @@
     <result column="static_mesh_path" property="staticMeshPath" jdbcType="VARCHAR" />
     <result column="skeletal_mesh_path" property="skeletalMeshPath" jdbcType="VARCHAR" />
     <result column="attachment_sockets" property="attachmentSockets" jdbcType="VARCHAR" />
-    <result column="dedicate_weapon_id" property="dedicateWeaponId" jdbcType="BIGINT" />
+    <result column="dedicated_weapon_id" property="dedicateWeaponId" jdbcType="BIGINT" />
     <result column="concrete" property="concrete" jdbcType="TINYINT" />
     <result column="desc" property="desc" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="BIGINT" />
@@ -18,6 +18,6 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, item_name, alias, item_type, static_mesh_path, skeletal_mesh_path, attachment_sockets,
-    dedicate_weapon_id, concrete, desc, create_time, update_time, status
+    dedicated_weapon_id, concrete, desc, create_time, update_time, status
   </sql>
 </mapper>

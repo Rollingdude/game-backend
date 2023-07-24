@@ -19,7 +19,7 @@ public interface PlayerModelMapper {
     /**
      * gets a copy of the userEntity
      *
-     * @param userEntity source user
+     * @param playerEntity source user
      * @return copy of source userEntity
      */
     PlayerEntity copyOf(PlayerEntity playerEntity);
@@ -27,7 +27,7 @@ public interface PlayerModelMapper {
     /**
      * convert the userEntity to userVO instance
      *
-     * @param userEntity source user
+     * @param playerEntity source user
      * @return userVO
      */
     PlayerVO toPlayerVO(PlayerEntity playerEntity);
