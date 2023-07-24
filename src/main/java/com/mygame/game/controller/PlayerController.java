@@ -4,6 +4,7 @@ import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
 import com.mygame.game.model.vo.PlayerVO;
 import com.mygame.game.service.PlayerService;
+import org.springframework.data.web.JsonPath;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,8 +30,8 @@ public class PlayerController {
      * @param playerId playerId
      * @return User Rsp
      */
-    @GetMapping("/getByPlayerId")
-    public IResponse<PlayerVO> getPlayer(@RequestParam("playerId") Long playerId) {
+    @GetMapping("/{playerId}")
+    public IResponse<PlayerVO> getPlayer(@PathVariable("playerId") Long playerId) {
         return Response.success(playerService.getUserInfo(playerId));
     }
 }
