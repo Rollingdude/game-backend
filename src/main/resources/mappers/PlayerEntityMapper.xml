@@ -18,7 +18,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, nickname, password, level, personal_signature, avatar, platform, platform_nickname, 
+    id, nickname, `password`, `level`, personal_signature, avatar, platform, platform_nickname,
     status, preferred_loadout_index,create_time, update_time
   </sql>
 </mapper>
