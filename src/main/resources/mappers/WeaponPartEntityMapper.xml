@@ -2,22 +2,270 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mygame.game.mapper.WeaponPartEntityMapper" >
   <resultMap id="BaseResultMap" type="com.mygame.game.entity.WeaponPartEntity" >
-    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="alias" property="alias" jdbcType="VARCHAR" />
     <result column="item_type" property="itemType" jdbcType="VARCHAR" />
+    <result column="mesh_type" property="meshType" jdbcType="VARCHAR" />
+    <result column="anim_data_path" property="animDataPath" jdbcType="VARCHAR" />
     <result column="static_mesh_path" property="staticMeshPath" jdbcType="VARCHAR" />
     <result column="skeletal_mesh_path" property="skeletalMeshPath" jdbcType="VARCHAR" />
-    <result column="attachment_sockets" property="attachmentSockets" jdbcType="VARCHAR" />
-    <result column="dedicated_weapon_id" property="dedicateWeaponId" jdbcType="BIGINT" />
-    <result column="concrete" property="concrete" jdbcType="TINYINT" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="avatar_actor_class_path" property="avatarActorClassPath" jdbcType="VARCHAR" />
+    <result column="anim_class_path" property="animClassPath" jdbcType="VARCHAR" />
+    <result column="dedicated_weapon_id" property="dedicatedWeaponId" jdbcType="INTEGER" />
+    <result column="attach_parent_socket_name" property="attachParentSocketName" jdbcType="VARCHAR" />
+    <result column="weapon_part_type" property="weaponPartType" jdbcType="VARCHAR" />
+    <result column="compatible_weapons" property="compatibleWeapons" jdbcType="VARCHAR" />
+    <result column="socket_type_and_names" property="socketTypeAndNames" jdbcType="VARCHAR" />
+    <result column="icon_assets_path" property="iconAssetsPath" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="BIGINT" />
     <result column="update_time" property="updateTime" jdbcType="BIGINT" />
-    <result column="status" property="status" jdbcType="BIT" />
+    <result column="states" property="states" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, item_name, alias, item_type, static_mesh_path, skeletal_mesh_path, attachment_sockets,
-    dedicated_weapon_id, concrete, desc, create_time, update_time, status
+    id, item_name, alias, item_type, mesh_type, anim_data_path, static_mesh_path, skeletal_mesh_path, 
+    avatar_actor_class_path, anim_class_path, dedicated_weapon_id, attach_parent_socket_name, 
+    weapon_part_type, compatible_weapons, socket_type_and_names, icon_assets_path, description, 
+    create_time, update_time, states
   </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_weapon_part
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_weapon_part
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mygame.game.entity.WeaponPartEntity" >
+    insert into tb_weapon_part (id, item_name, alias, 
+      item_type, mesh_type, anim_data_path, 
+      static_mesh_path, skeletal_mesh_path, avatar_actor_class_path, 
+      anim_class_path, dedicated_weapon_id, attach_parent_socket_name, 
+      weapon_part_type, compatible_weapons, socket_type_and_names, 
+      icon_assets_path, description, create_time, 
+      update_time, states)
+    values (#{id,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{itemType,jdbcType=VARCHAR}, #{meshType,jdbcType=VARCHAR}, #{animDataPath,jdbcType=VARCHAR}, 
+      #{staticMeshPath,jdbcType=VARCHAR}, #{skeletalMeshPath,jdbcType=VARCHAR}, #{avatarActorClassPath,jdbcType=VARCHAR}, 
+      #{animClassPath,jdbcType=VARCHAR}, #{dedicatedWeaponId,jdbcType=INTEGER}, #{attachParentSocketName,jdbcType=VARCHAR}, 
+      #{weaponPartType,jdbcType=VARCHAR}, #{compatibleWeapons,jdbcType=VARCHAR}, #{socketTypeAndNames,jdbcType=VARCHAR}, 
+      #{iconAssetsPath,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT}, #{states,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mygame.game.entity.WeaponPartEntity" >
+    insert into tb_weapon_part
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="alias != null" >
+        alias,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="meshType != null" >
+        mesh_type,
+      </if>
+      <if test="animDataPath != null" >
+        anim_data_path,
+      </if>
+      <if test="staticMeshPath != null" >
+        static_mesh_path,
+      </if>
+      <if test="skeletalMeshPath != null" >
+        skeletal_mesh_path,
+      </if>
+      <if test="avatarActorClassPath != null" >
+        avatar_actor_class_path,
+      </if>
+      <if test="animClassPath != null" >
+        anim_class_path,
+      </if>
+      <if test="dedicatedWeaponId != null" >
+        dedicated_weapon_id,
+      </if>
+      <if test="attachParentSocketName != null" >
+        attach_parent_socket_name,
+      </if>
+      <if test="weaponPartType != null" >
+        weapon_part_type,
+      </if>
+      <if test="compatibleWeapons != null" >
+        compatible_weapons,
+      </if>
+      <if test="socketTypeAndNames != null" >
+        socket_type_and_names,
+      </if>
+      <if test="iconAssetsPath != null" >
+        icon_assets_path,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="states != null" >
+        states,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null" >
+        #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null" >
+        #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null" >
+        #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null" >
+        #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null" >
+        #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null" >
+        #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="dedicatedWeaponId != null" >
+        #{dedicatedWeaponId,jdbcType=INTEGER},
+      </if>
+      <if test="attachParentSocketName != null" >
+        #{attachParentSocketName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponPartType != null" >
+        #{weaponPartType,jdbcType=VARCHAR},
+      </if>
+      <if test="compatibleWeapons != null" >
+        #{compatibleWeapons,jdbcType=VARCHAR},
+      </if>
+      <if test="socketTypeAndNames != null" >
+        #{socketTypeAndNames,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null" >
+        #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="states != null" >
+        #{states,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mygame.game.entity.WeaponPartEntity" >
+    update tb_weapon_part
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null" >
+        mesh_type = #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null" >
+        anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null" >
+        static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null" >
+        skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null" >
+        avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null" >
+        anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="dedicatedWeaponId != null" >
+        dedicated_weapon_id = #{dedicatedWeaponId,jdbcType=INTEGER},
+      </if>
+      <if test="attachParentSocketName != null" >
+        attach_parent_socket_name = #{attachParentSocketName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponPartType != null" >
+        weapon_part_type = #{weaponPartType,jdbcType=VARCHAR},
+      </if>
+      <if test="compatibleWeapons != null" >
+        compatible_weapons = #{compatibleWeapons,jdbcType=VARCHAR},
+      </if>
+      <if test="socketTypeAndNames != null" >
+        socket_type_and_names = #{socketTypeAndNames,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null" >
+        icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="states != null" >
+        states = #{states,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mygame.game.entity.WeaponPartEntity" >
+    update tb_weapon_part
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      mesh_type = #{meshType,jdbcType=VARCHAR},
+      anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      dedicated_weapon_id = #{dedicatedWeaponId,jdbcType=INTEGER},
+      attach_parent_socket_name = #{attachParentSocketName,jdbcType=VARCHAR},
+      weapon_part_type = #{weaponPartType,jdbcType=VARCHAR},
+      compatible_weapons = #{compatibleWeapons,jdbcType=VARCHAR},
+      socket_type_and_names = #{socketTypeAndNames,jdbcType=VARCHAR},
+      icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      states = #{states,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

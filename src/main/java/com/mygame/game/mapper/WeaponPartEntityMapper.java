@@ -5,7 +5,7 @@ import com.mygame.game.entity.WeaponPartEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * weapon part entity mapper
+ * Weapon part entity mapper
  *
  * @author Lynx
  * @since 2023/07/21

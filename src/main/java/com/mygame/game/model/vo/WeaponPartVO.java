@@ -1,5 +1,7 @@
 package com.mygame.game.model.vo;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+import com.mygame.game.config.JsonStringSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,18 +14,18 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class WeaponPartVO extends ItemVO {
-    /**
-     * available attachment socket this weapon part contains
-     */
-    private String attachmentSockets;
 
-    /**
-     * the weapon id this part dedicated for
-     */
-    private Long dedicateWeaponId;
+    @JSONField(name = "DedicatedWeaponId")
+    private Integer dedicatedWeaponId;
+    @JSONField(name = "AttachParentSocketName")
+    private String attachParentSocketName;
 
-    /**
-     * indicates if this is a concrete Weapon part
-     */
-    private Byte concrete;
+    @JSONField(name = "WeaponPartType")
+    private String weaponPartType;
+
+    @JSONField(name = "CompatibleWeapons", serializeUsing = JsonStringSerializer.class)
+    private String compatibleWeapons;
+
+    @JSONField(name = "SocketTypeAndNames", serializeUsing = JsonStringSerializer.class)
+    private String socketTypeAndNames;
 }

@@ -15,24 +15,15 @@ import lombok.EqualsAndHashCode;
 @Data
 @TableName("tb_weapon_part")
 public class WeaponPartEntity extends ItemEntity {
-    /**
-     * available attachment socket this weapon part contains
-     */
-    private String attachmentSockets;
 
-    /**
-     * the weapon id this part dedicated for
-     */
-    private Long dedicatedWeaponId;
+    private Integer dedicatedWeaponId;
 
-    /**
-     * indicates if this is a concrete Weapon part
-     */
-    private Byte concrete;
+    private String attachParentSocketName;
 
-    /**
-     * the buff items applied to this weapon part
-     */
-    private String buffItemIds;
+    private String weaponPartType;
+
+    private String compatibleWeapons;
+
+    private String socketTypeAndNames;
 
 }
