@@ -3,17 +3,9 @@ package com.mygame.game.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.mygame.game.entity.item.ItemEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-/**
- * weapon entity
- *
- * @author Lynx
- * @since 2023/07/19
- */
-@EqualsAndHashCode(callSuper = true)
-@TableName("tb_weapon")
 @Data
+@TableName("tb_weapon")
 public class WeaponEntity extends ItemEntity {
 
     private String weaponCategory;
@@ -60,9 +52,12 @@ public class WeaponEntity extends ItemEntity {
 
     private String projectileClassPath;
 
+    private String iconAssetsPath;
+
     private String weaponEffectsAssetsPath;
 
     private Float baseRecoilHorizontalFactor;
 
     private Float baseRecoilVerticalFactor;
+
 }

@@ -42,7 +42,7 @@ public class PlayerLoadoutManager {
      */
     public List<PlayerLoadoutEntity> getByPlayerId(Long playerId) {
         LambdaQueryWrapper<PlayerLoadoutEntity> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(PlayerLoadoutEntity::getPlayerId, playerId).eq(PlayerLoadoutEntity::getStatus, 1);
+        lambdaQueryWrapper.eq(PlayerLoadoutEntity::getPlayerId, playerId).eq(PlayerLoadoutEntity::getStates, 1);
         return playerLoadoutEntityMapper.selectList(lambdaQueryWrapper);
     }
 

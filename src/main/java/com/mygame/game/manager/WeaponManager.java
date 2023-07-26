@@ -42,7 +42,7 @@ public class WeaponManager {
      */
     public List<WeaponEntity> getAll() {
         LambdaQueryWrapper<WeaponEntity> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(WeaponEntity::getStatus, 1);
+        lambdaQueryWrapper.eq(WeaponEntity::getStates, 1);
         return weaponEntityMapper.selectList(lambdaQueryWrapper);
     }
 }

@@ -26,7 +26,7 @@ public class PlayerLoadoutEntity extends BaseEntity {
     private String content;
 
     /**
-     * index of this loadout
+     * index of this loadoutd
      */
     private Byte loadoutIndex;
 

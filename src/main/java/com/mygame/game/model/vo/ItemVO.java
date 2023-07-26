@@ -1,5 +1,6 @@
 package com.mygame.game.model.vo;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import com.mygame.game.enums.ItemMeshType;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class ItemVO {
     /**
      * the item id
      */
+    @JSONField(name = "Id")
     private Long id;
 
     /**
@@ -22,56 +24,66 @@ public class ItemVO {
      * 0--禁用
      * 1--正常
      */
-    private Byte status;
+    @JSONField(name = "States")
+    private Byte states;
 
     /**
      * item name
      */
-    private String ItemName;
+    @JSONField(name = "ItemName")
+    private String itemName;
 
     /**
      * item alias name
      */
+    @JSONField(name = "Alias")
     private String alias;
 
     /**
      * item type
      */
-    private String ItemType;
+    @JSONField(name = "ItemType")
+    private String itemType;
 
     /**
      * item desc
      */
-    private String desc;
+    @JSONField(name = "Description")
+    private String description;
 
     /**
      * visual mesh type
      */
-    private ItemMeshType MeshType;
+    @JSONField(name = "MeshType")
+    private String meshType;
 
     /**
      * the related animation asset to use
      */
-
-    private String ItemAnimDataPath;
+    @JSONField(name = "ItemAnimDataPath")
+    private String itemAnimDataPath;
 
     /**
      * the skeletal mesh to use if applicable
      */
+    @JSONField(name = "SkeletalMeshPath")
     private String skeletalMeshPath;
 
     /**
      * static mesh assets path
      */
+    @JSONField(name = "StaticMeshPath")
     private String staticMeshPath;
 
     /**
      * the item avatar actor class
      */
+    @JSONField(name = "avatarActorClassPath")
     String AvatarActorClassPath;
 
     /**
      * the item anim class
      */
-    private String ItemAnimClassPath;
+    @JSONField(name = "ItemAnimClassPath")
+    private String itemAnimClassPath;
 }

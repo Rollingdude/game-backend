@@ -6,8 +6,12 @@
     <result column="item_name" property="itemName" jdbcType="VARCHAR" />
     <result column="alias" property="alias" jdbcType="VARCHAR" />
     <result column="item_type" property="itemType" jdbcType="VARCHAR" />
+    <result column="mesh_type" property="meshType" jdbcType="VARCHAR" />
+    <result column="anim_data_path" property="animDataPath" jdbcType="VARCHAR" />
     <result column="static_mesh_path" property="staticMeshPath" jdbcType="VARCHAR" />
     <result column="skeletal_mesh_path" property="skeletalMeshPath" jdbcType="VARCHAR" />
+    <result column="avatar_actor_class_path" property="avatarActorClassPath" jdbcType="VARCHAR" />
+    <result column="anim_class_path" property="animClassPath" jdbcType="VARCHAR" />
     <result column="weapon_category" property="weaponCategory" jdbcType="VARCHAR" />
     <result column="concrete" property="concrete" jdbcType="TINYINT" />
     <result column="base_clip_capacity" property="baseClipCapacity" jdbcType="INTEGER" />
@@ -30,21 +34,478 @@
     <result column="available_reload_types" property="availableReloadTypes" jdbcType="VARCHAR" />
     <result column="default_weapon_part_path" property="defaultWeaponPartPath" jdbcType="VARCHAR" />
     <result column="projectile_class_path" property="projectileClassPath" jdbcType="VARCHAR" />
+    <result column="icon_assets_path" property="iconAssetsPath" jdbcType="VARCHAR" />
     <result column="weapon_effects_assets_path" property="weaponEffectsAssetsPath" jdbcType="VARCHAR" />
     <result column="base_recoil_horizontal_factor" property="baseRecoilHorizontalFactor" jdbcType="REAL" />
     <result column="base_recoil_vertical_factor" property="baseRecoilVerticalFactor" jdbcType="REAL" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="BIGINT" />
     <result column="update_time" property="updateTime" jdbcType="BIGINT" />
-    <result column="status" property="status" jdbcType="BIT" />
+    <result column="states" property="states" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, item_name, alias, item_type, static_mesh_path, skeletal_mesh_path, weapon_category,
-    concrete, base_clip_capacity, base_clip_size, max_ammo, time_between_shots, ads_in_time, 
-    ads_out_time, base_ads_fov, base_damage, muzzle_speed, scan_trace_range, semi_burst_count,
-    semi_burst_interval, bullet_per_cartridge, projectile_damage_multiplier, require_optic_rail,
-    priority, available_fire_modes, available_reload_types, default_weapon_part_path, 
-    projectile_class_path, weapon_effects_assets_path, base_recoil_horizontal_factor, 
-    base_recoil_vertical_factor, desc, create_time, update_time, status
+    id, item_name, alias, item_type, mesh_type, anim_data_path, static_mesh_path, skeletal_mesh_path, 
+    avatar_actor_class_path, anim_class_path, weapon_category, concrete, base_clip_capacity, 
+    base_clip_size, max_ammo, time_between_shots, ads_in_time, ads_out_time, base_ads_fov, 
+    base_damage, muzzle_speed, scan_trace_range, semi_burst_count, semi_burst_interval, 
+    bullet_per_cartridge, projectile_damage_multiplier, require_optic_rail, priority, 
+    available_fire_modes, available_reload_types, default_weapon_part_path, projectile_class_path, 
+    icon_assets_path, weapon_effects_assets_path, base_recoil_horizontal_factor, base_recoil_vertical_factor, 
+    description, create_time, update_time,states
   </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_weapon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_weapon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mygame.game.entity.WeaponTempEntity" >
+    insert into tb_weapon (id, item_name, alias, 
+      item_type, mesh_type, anim_data_path, 
+      static_mesh_path, skeletal_mesh_path, avatar_actor_class_path, 
+      anim_class_path, weapon_category, concrete, 
+      base_clip_capacity, base_clip_size, max_ammo, 
+      time_between_shots, ads_in_time, ads_out_time, 
+      base_ads_fov, base_damage, muzzle_speed, 
+      scan_trace_range, semi_burst_count, semi_burst_interval, 
+      bullet_per_cartridge, projectile_damage_multiplier, 
+      require_optic_rail, priority, available_fire_modes, 
+      available_reload_types, default_weapon_part_path, 
+      projectile_class_path, icon_assets_path, weapon_effects_assets_path, 
+      base_recoil_horizontal_factor, base_recoil_vertical_factor, 
+      desc, create_time, update_time, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{itemType,jdbcType=VARCHAR}, #{meshType,jdbcType=VARCHAR}, #{animDataPath,jdbcType=VARCHAR}, 
+      #{staticMeshPath,jdbcType=VARCHAR}, #{skeletalMeshPath,jdbcType=VARCHAR}, #{avatarActorClassPath,jdbcType=VARCHAR}, 
+      #{animClassPath,jdbcType=VARCHAR}, #{weaponCategory,jdbcType=VARCHAR}, #{concrete,jdbcType=TINYINT}, 
+      #{baseClipCapacity,jdbcType=INTEGER}, #{baseClipSize,jdbcType=INTEGER}, #{maxAmmo,jdbcType=INTEGER}, 
+      #{timeBetweenShots,jdbcType=REAL}, #{adsInTime,jdbcType=REAL}, #{adsOutTime,jdbcType=REAL}, 
+      #{baseAdsFov,jdbcType=REAL}, #{baseDamage,jdbcType=REAL}, #{muzzleSpeed,jdbcType=REAL}, 
+      #{scanTraceRange,jdbcType=REAL}, #{semiBurstCount,jdbcType=INTEGER}, #{semiBurstInterval,jdbcType=REAL}, 
+      #{bulletPerCartridge,jdbcType=INTEGER}, #{projectileDamageMultiplier,jdbcType=REAL}, 
+      #{requireOpticRail,jdbcType=BIT}, #{priority,jdbcType=TINYINT}, #{availableFireModes,jdbcType=VARCHAR}, 
+      #{availableReloadTypes,jdbcType=VARCHAR}, #{defaultWeaponPartPath,jdbcType=VARCHAR}, 
+      #{projectileClassPath,jdbcType=VARCHAR}, #{iconAssetsPath,jdbcType=VARCHAR}, #{weaponEffectsAssetsPath,jdbcType=VARCHAR}, 
+      #{baseRecoilHorizontalFactor,jdbcType=REAL}, #{baseRecoilVerticalFactor,jdbcType=REAL}, 
+      #{desc,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
+      #{status,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mygame.game.entity.WeaponTempEntity" >
+    insert into tb_weapon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="alias != null" >
+        alias,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="meshType != null" >
+        mesh_type,
+      </if>
+      <if test="animDataPath != null" >
+        anim_data_path,
+      </if>
+      <if test="staticMeshPath != null" >
+        static_mesh_path,
+      </if>
+      <if test="skeletalMeshPath != null" >
+        skeletal_mesh_path,
+      </if>
+      <if test="avatarActorClassPath != null" >
+        avatar_actor_class_path,
+      </if>
+      <if test="animClassPath != null" >
+        anim_class_path,
+      </if>
+      <if test="weaponCategory != null" >
+        weapon_category,
+      </if>
+      <if test="concrete != null" >
+        concrete,
+      </if>
+      <if test="baseClipCapacity != null" >
+        base_clip_capacity,
+      </if>
+      <if test="baseClipSize != null" >
+        base_clip_size,
+      </if>
+      <if test="maxAmmo != null" >
+        max_ammo,
+      </if>
+      <if test="timeBetweenShots != null" >
+        time_between_shots,
+      </if>
+      <if test="adsInTime != null" >
+        ads_in_time,
+      </if>
+      <if test="adsOutTime != null" >
+        ads_out_time,
+      </if>
+      <if test="baseAdsFov != null" >
+        base_ads_fov,
+      </if>
+      <if test="baseDamage != null" >
+        base_damage,
+      </if>
+      <if test="muzzleSpeed != null" >
+        muzzle_speed,
+      </if>
+      <if test="scanTraceRange != null" >
+        scan_trace_range,
+      </if>
+      <if test="semiBurstCount != null" >
+        semi_burst_count,
+      </if>
+      <if test="semiBurstInterval != null" >
+        semi_burst_interval,
+      </if>
+      <if test="bulletPerCartridge != null" >
+        bullet_per_cartridge,
+      </if>
+      <if test="projectileDamageMultiplier != null" >
+        projectile_damage_multiplier,
+      </if>
+      <if test="requireOpticRail != null" >
+        require_optic_rail,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="availableFireModes != null" >
+        available_fire_modes,
+      </if>
+      <if test="availableReloadTypes != null" >
+        available_reload_types,
+      </if>
+      <if test="defaultWeaponPartPath != null" >
+        default_weapon_part_path,
+      </if>
+      <if test="projectileClassPath != null" >
+        projectile_class_path,
+      </if>
+      <if test="iconAssetsPath != null" >
+        icon_assets_path,
+      </if>
+      <if test="weaponEffectsAssetsPath != null" >
+        weapon_effects_assets_path,
+      </if>
+      <if test="baseRecoilHorizontalFactor != null" >
+        base_recoil_horizontal_factor,
+      </if>
+      <if test="baseRecoilVerticalFactor != null" >
+        base_recoil_vertical_factor,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null" >
+        #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null" >
+        #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null" >
+        #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null" >
+        #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null" >
+        #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null" >
+        #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponCategory != null" >
+        #{weaponCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="concrete != null" >
+        #{concrete,jdbcType=TINYINT},
+      </if>
+      <if test="baseClipCapacity != null" >
+        #{baseClipCapacity,jdbcType=INTEGER},
+      </if>
+      <if test="baseClipSize != null" >
+        #{baseClipSize,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmmo != null" >
+        #{maxAmmo,jdbcType=INTEGER},
+      </if>
+      <if test="timeBetweenShots != null" >
+        #{timeBetweenShots,jdbcType=REAL},
+      </if>
+      <if test="adsInTime != null" >
+        #{adsInTime,jdbcType=REAL},
+      </if>
+      <if test="adsOutTime != null" >
+        #{adsOutTime,jdbcType=REAL},
+      </if>
+      <if test="baseAdsFov != null" >
+        #{baseAdsFov,jdbcType=REAL},
+      </if>
+      <if test="baseDamage != null" >
+        #{baseDamage,jdbcType=REAL},
+      </if>
+      <if test="muzzleSpeed != null" >
+        #{muzzleSpeed,jdbcType=REAL},
+      </if>
+      <if test="scanTraceRange != null" >
+        #{scanTraceRange,jdbcType=REAL},
+      </if>
+      <if test="semiBurstCount != null" >
+        #{semiBurstCount,jdbcType=INTEGER},
+      </if>
+      <if test="semiBurstInterval != null" >
+        #{semiBurstInterval,jdbcType=REAL},
+      </if>
+      <if test="bulletPerCartridge != null" >
+        #{bulletPerCartridge,jdbcType=INTEGER},
+      </if>
+      <if test="projectileDamageMultiplier != null" >
+        #{projectileDamageMultiplier,jdbcType=REAL},
+      </if>
+      <if test="requireOpticRail != null" >
+        #{requireOpticRail,jdbcType=BIT},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="availableFireModes != null" >
+        #{availableFireModes,jdbcType=VARCHAR},
+      </if>
+      <if test="availableReloadTypes != null" >
+        #{availableReloadTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultWeaponPartPath != null" >
+        #{defaultWeaponPartPath,jdbcType=VARCHAR},
+      </if>
+      <if test="projectileClassPath != null" >
+        #{projectileClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null" >
+        #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponEffectsAssetsPath != null" >
+        #{weaponEffectsAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="baseRecoilHorizontalFactor != null" >
+        #{baseRecoilHorizontalFactor,jdbcType=REAL},
+      </if>
+      <if test="baseRecoilVerticalFactor != null" >
+        #{baseRecoilVerticalFactor,jdbcType=REAL},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mygame.game.entity.WeaponTempEntity" >
+    update tb_weapon
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null" >
+        mesh_type = #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null" >
+        anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null" >
+        static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null" >
+        skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null" >
+        avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null" >
+        anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponCategory != null" >
+        weapon_category = #{weaponCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="concrete != null" >
+        concrete = #{concrete,jdbcType=TINYINT},
+      </if>
+      <if test="baseClipCapacity != null" >
+        base_clip_capacity = #{baseClipCapacity,jdbcType=INTEGER},
+      </if>
+      <if test="baseClipSize != null" >
+        base_clip_size = #{baseClipSize,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmmo != null" >
+        max_ammo = #{maxAmmo,jdbcType=INTEGER},
+      </if>
+      <if test="timeBetweenShots != null" >
+        time_between_shots = #{timeBetweenShots,jdbcType=REAL},
+      </if>
+      <if test="adsInTime != null" >
+        ads_in_time = #{adsInTime,jdbcType=REAL},
+      </if>
+      <if test="adsOutTime != null" >
+        ads_out_time = #{adsOutTime,jdbcType=REAL},
+      </if>
+      <if test="baseAdsFov != null" >
+        base_ads_fov = #{baseAdsFov,jdbcType=REAL},
+      </if>
+      <if test="baseDamage != null" >
+        base_damage = #{baseDamage,jdbcType=REAL},
+      </if>
+      <if test="muzzleSpeed != null" >
+        muzzle_speed = #{muzzleSpeed,jdbcType=REAL},
+      </if>
+      <if test="scanTraceRange != null" >
+        scan_trace_range = #{scanTraceRange,jdbcType=REAL},
+      </if>
+      <if test="semiBurstCount != null" >
+        semi_burst_count = #{semiBurstCount,jdbcType=INTEGER},
+      </if>
+      <if test="semiBurstInterval != null" >
+        semi_burst_interval = #{semiBurstInterval,jdbcType=REAL},
+      </if>
+      <if test="bulletPerCartridge != null" >
+        bullet_per_cartridge = #{bulletPerCartridge,jdbcType=INTEGER},
+      </if>
+      <if test="projectileDamageMultiplier != null" >
+        projectile_damage_multiplier = #{projectileDamageMultiplier,jdbcType=REAL},
+      </if>
+      <if test="requireOpticRail != null" >
+        require_optic_rail = #{requireOpticRail,jdbcType=BIT},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="availableFireModes != null" >
+        available_fire_modes = #{availableFireModes,jdbcType=VARCHAR},
+      </if>
+      <if test="availableReloadTypes != null" >
+        available_reload_types = #{availableReloadTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultWeaponPartPath != null" >
+        default_weapon_part_path = #{defaultWeaponPartPath,jdbcType=VARCHAR},
+      </if>
+      <if test="projectileClassPath != null" >
+        projectile_class_path = #{projectileClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null" >
+        icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponEffectsAssetsPath != null" >
+        weapon_effects_assets_path = #{weaponEffectsAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="baseRecoilHorizontalFactor != null" >
+        base_recoil_horizontal_factor = #{baseRecoilHorizontalFactor,jdbcType=REAL},
+      </if>
+      <if test="baseRecoilVerticalFactor != null" >
+        base_recoil_vertical_factor = #{baseRecoilVerticalFactor,jdbcType=REAL},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mygame.game.entity.WeaponTempEntity" >
+    update tb_weapon
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      mesh_type = #{meshType,jdbcType=VARCHAR},
+      anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      weapon_category = #{weaponCategory,jdbcType=VARCHAR},
+      concrete = #{concrete,jdbcType=TINYINT},
+      base_clip_capacity = #{baseClipCapacity,jdbcType=INTEGER},
+      base_clip_size = #{baseClipSize,jdbcType=INTEGER},
+      max_ammo = #{maxAmmo,jdbcType=INTEGER},
+      time_between_shots = #{timeBetweenShots,jdbcType=REAL},
+      ads_in_time = #{adsInTime,jdbcType=REAL},
+      ads_out_time = #{adsOutTime,jdbcType=REAL},
+      base_ads_fov = #{baseAdsFov,jdbcType=REAL},
+      base_damage = #{baseDamage,jdbcType=REAL},
+      muzzle_speed = #{muzzleSpeed,jdbcType=REAL},
+      scan_trace_range = #{scanTraceRange,jdbcType=REAL},
+      semi_burst_count = #{semiBurstCount,jdbcType=INTEGER},
+      semi_burst_interval = #{semiBurstInterval,jdbcType=REAL},
+      bullet_per_cartridge = #{bulletPerCartridge,jdbcType=INTEGER},
+      projectile_damage_multiplier = #{projectileDamageMultiplier,jdbcType=REAL},
+      require_optic_rail = #{requireOpticRail,jdbcType=BIT},
+      priority = #{priority,jdbcType=TINYINT},
+      available_fire_modes = #{availableFireModes,jdbcType=VARCHAR},
+      available_reload_types = #{availableReloadTypes,jdbcType=VARCHAR},
+      default_weapon_part_path = #{defaultWeaponPartPath,jdbcType=VARCHAR},
+      projectile_class_path = #{projectileClassPath,jdbcType=VARCHAR},
+      icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      weapon_effects_assets_path = #{weaponEffectsAssetsPath,jdbcType=VARCHAR},
+      base_recoil_horizontal_factor = #{baseRecoilHorizontalFactor,jdbcType=REAL},
+      base_recoil_vertical_factor = #{baseRecoilVerticalFactor,jdbcType=REAL},
+      desc = #{desc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      status = #{status,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

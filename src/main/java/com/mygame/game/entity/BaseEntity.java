@@ -32,7 +32,7 @@ public class BaseEntity {
      * 0--禁用
      * 1--正常
      */
-    private Byte status;
+    private Byte states;
 
     /**
      * updateTime

@@ -17,7 +17,7 @@ public class ItemEntity extends BaseEntity {
     /**
      * item name
      */
-    private String ItemName;
+    private String itemName;
 
     /**
      * item alias name
@@ -27,23 +27,23 @@ public class ItemEntity extends BaseEntity {
     /**
      * item type
      */
-    private String ItemType;
+    private String itemType;
 
     /**
      * item desc
      */
-    private String desc;
+    private String description;
 
     /**
      * visual mesh type
      */
-    private ItemMeshType MeshType;
+    private String meshType;
 
     /**
      * the related animation asset to use
      */
 
-    private String ItemAnimDataPath;
+    private String animDataPath;
 
     /**
      * the skeletal mesh to use if applicable
@@ -58,12 +58,12 @@ public class ItemEntity extends BaseEntity {
     /**
      * the item avatar actor class
      */
-    String AvatarActorClassPath;
+    String avatarActorClassPath;
 
     /**
      * the item anim class
      */
-    private String ItemAnimClassPath;
+    private String animClassPath;
 
     /**
      * display icons assets path used by ui
