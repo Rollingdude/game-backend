@@ -1,11 +1,12 @@
 package com.mygame.game.model.vo;
 
 import com.alibaba.fastjson2.annotation.JSONField;
-import com.mygame.game.enums.ItemMeshType;
 import lombok.Data;
 
 /**
  * base ItemVO info
+ * the property name should be overridden since unreal engine naming properties start with upper case characters during
+ * serialization process,this will be convenient for UStruct converting from Jsons Strings
  *
  * @author Lynx
  * @since 2023/07/21

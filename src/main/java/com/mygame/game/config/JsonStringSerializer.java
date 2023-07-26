@@ -15,6 +15,5 @@ public class JsonStringSerializer implements ObjectSerializer {
     public void write(JSONSerializer jsonSerializer, Object o, Object o1, Type type, int i) throws IOException {
                     String value = String.valueOf(o);
                     jsonSerializer.write(JSON.parseArray(value));
-
     }
 }
