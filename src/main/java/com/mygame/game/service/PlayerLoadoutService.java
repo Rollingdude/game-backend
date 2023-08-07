@@ -29,7 +29,7 @@ public class PlayerLoadoutService {
         this.playerLoadoutManager = playerLoadoutManager;
     }
 
-    public List<PlayerLoadoutVO> getPlayerLoadouts(Long playerId) {
+    public List<PlayerLoadoutVO> getPlayerLoadouts(Integer playerId) {
         List<PlayerLoadoutEntity> loadoutEntities = playerLoadoutManager.getByPlayerId(playerId);
         List<PlayerLoadoutVO> loadoutVOs = new ArrayList<>(loadoutEntities.size());
         loadoutEntities.forEach(playerLoadoutEntity -> {
@@ -38,6 +38,7 @@ public class PlayerLoadoutService {
             playerLoadoutVO.setLoadoutName(playerLoadoutEntity.getName());
             playerLoadoutVO.setContent(playerLoadoutEntity.getContent());
             playerLoadoutVO.setLoadoutIndex(playerLoadoutEntity.getLoadoutIndex());
+            loadoutVOs.add(playerLoadoutVO);
         });
         return loadoutVOs;
     }

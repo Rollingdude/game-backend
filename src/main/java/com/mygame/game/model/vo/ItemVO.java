@@ -79,12 +79,18 @@ public class ItemVO {
     /**
      * the item avatar actor class
      */
-    @JSONField(name = "avatarActorClassPath")
-    String AvatarActorClassPath;
+    @JSONField(name = "AvatarActorClassPath")
+    String avatarActorClassPath;
 
     /**
      * the item anim class
      */
     @JSONField(name = "ItemAnimClassPath")
     private String itemAnimClassPath;
+
+    /**
+     * the item icon assets
+     */
+    @JSONField(name = "IconAssetsPath")
+    private String iconAssetsPath;
 }

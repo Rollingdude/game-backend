@@ -34,8 +34,8 @@ public class PlayerLoadoutController {
      * @return loadout data
      */
     @GetMapping("/{playerId}")
-    IResponse<List<PlayerLoadoutVO>> getByPlayer(@PathVariable("playerId") Long playerId) {
-        return Response.success(playerLoadoutService.getPlayerLoadouts(playerId));
+    IResponse<PlayerLoadoutVO> getByPlayer(@PathVariable("playerId") Integer playerId) {
+        return Response.success(playerLoadoutService.getPlayerLoadouts(playerId).get(0));
     }
 
     /**
