@@ -14,5 +14,5 @@ public class LoadoutUpdateDTO {
 
     private String name;
 
-    private String conent;
+    private String content;
 }

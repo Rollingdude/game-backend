@@ -47,7 +47,7 @@ public class PlayerLoadoutService {
         PlayerLoadoutEntity playerLoadoutEntity = new PlayerLoadoutEntity();
         playerLoadoutEntity.setId(updateDTO.getId());
         playerLoadoutEntity.setName(updateDTO.getName());
-        playerLoadoutEntity.setContent(updateDTO.getConent());
+        playerLoadoutEntity.setContent(updateDTO.getContent());
         playerLoadoutManager.updateById(playerLoadoutEntity);
     }
 }

@@ -1,10 +1,7 @@
 package com.mygame.game.mapper;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mygame.game.entity.PlayerLoadoutEntity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.apache.ibatis.annotations.Mapper;
 
 

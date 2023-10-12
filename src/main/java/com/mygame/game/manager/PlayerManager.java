@@ -28,9 +28,9 @@ public class PlayerManager {
     }
 
     /**
-     * get the user by userId
+     * get the user by playerId
      *
-     * @param userId userId
+     * @param playerId playerId
      * @return UserEntity
      */
     public PlayerEntity getById(Long playerId) {
