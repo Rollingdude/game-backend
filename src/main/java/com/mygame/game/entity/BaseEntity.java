@@ -18,8 +18,8 @@ public class BaseEntity {
     /**
      * id
      */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
-    private Long id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
      * createTime
