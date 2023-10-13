@@ -1,11 +1,14 @@
 package com.mygame.game.api;
 
+import lombok.Getter;
+
 /**
  * base response code implementation
  *
  * @author Lynx
  * @since 2023/07/18
  */
+@Getter
 public enum BaseResponseCode implements IResponseCode {
     SUCCESS(200, "success"),
     FAILURE(500, "failure");
@@ -15,7 +18,6 @@ public enum BaseResponseCode implements IResponseCode {
      */
     private final Integer code;
 
-
     /**
      * the response message
      */
@@ -24,15 +26,5 @@ public enum BaseResponseCode implements IResponseCode {
     BaseResponseCode(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
-    }
-
-    @Override
-    public Integer getCode() {
-        return code;
-    }
-
-    @Override
-    public String getMsg() {
-        return msg;
     }
 }

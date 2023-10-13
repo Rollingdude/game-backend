@@ -1,5 +1,7 @@
 package com.mygame.game.api;
 
+import lombok.Getter;
+
 /**
  * interface for response code definitions
  *
