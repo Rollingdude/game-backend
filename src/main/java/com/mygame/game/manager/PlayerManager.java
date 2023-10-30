@@ -33,7 +33,7 @@ public class PlayerManager {
      * @param playerId playerId
      * @return UserEntity
      */
-    public PlayerEntity getById(Long playerId) {
+    public PlayerEntity getById(int playerId) {
         LambdaQueryWrapper<PlayerEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(PlayerEntity::getId, playerId);
         return playerMapper.selectOne(queryWrapper);

@@ -31,7 +31,7 @@ public class PlayerController {
      * @return User Rsp
      */
     @GetMapping("/{playerId}")
-    public IResponse<PlayerVO> getPlayer(@PathVariable("playerId") Long playerId) {
+    public IResponse<PlayerVO> getPlayer(@PathVariable("playerId") int playerId) {
         return Response.success(playerService.getPlayerInfo(playerId));
     }
 }

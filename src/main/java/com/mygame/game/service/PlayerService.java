@@ -28,7 +28,7 @@ public class PlayerService {
         this.userManager = userManager;
     }
 
-    public PlayerVO getPlayerInfo(Long userId) {
+    public PlayerVO getPlayerInfo(int userId) {
         PlayerEntity playerEntity = userManager.getById(userId);
         logger.info("Player data:{}",playerEntity);
         return Objects.isNull(playerEntity) ? null : PlayerModelMapper.INSTANCE.toPlayerVO(playerEntity);
