@@ -10,8 +10,8 @@ import lombok.Getter;
  */
 @Getter
 public enum BaseResponseCode implements IResponseCode {
-    SUCCESS(200, "success"),
-    FAILURE(500, "failure");
+    SUCCESS(10000, "success"),
+    FAILURE(50000, "failure");
 
     /**
      * the response code

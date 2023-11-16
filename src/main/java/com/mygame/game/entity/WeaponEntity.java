@@ -3,7 +3,9 @@ package com.mygame.game.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.mygame.game.entity.item.ItemEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("tb_weapon")
 public class WeaponEntity extends ItemEntity {

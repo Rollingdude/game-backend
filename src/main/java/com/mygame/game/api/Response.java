@@ -1,5 +1,6 @@
 package com.mygame.game.api;
 
+import lombok.Data;
 import lombok.Setter;
 
 import java.util.Objects;

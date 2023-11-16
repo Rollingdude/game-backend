@@ -43,7 +43,7 @@ public class ItemEntity extends BaseEntity {
      * the related animation asset to use
      */
 
-    private String animDataPath;
+    private String itemAnimDataPath;
 
     /**
      * the skeletal mesh to use if applicable
@@ -63,7 +63,7 @@ public class ItemEntity extends BaseEntity {
     /**
      * the item anim class
      */
-    private String animClassPath;
+    private String itemAnimClassPath;
 
     /**
      * display icons assets path used by ui

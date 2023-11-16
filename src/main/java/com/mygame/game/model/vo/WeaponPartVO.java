@@ -17,6 +17,7 @@ public class WeaponPartVO extends ItemVO {
 
     @JSONField(name = "DedicatedWeaponId")
     private Integer dedicatedWeaponId;
+
     @JSONField(name = "AttachParentSocketName")
     private String attachParentSocketName;
 
@@ -26,6 +27,6 @@ public class WeaponPartVO extends ItemVO {
     @JSONField(name = "CompatibleWeapons", serializeUsing = JsonStringSerializer.class)
     private String compatibleWeapons;
 
-    @JSONField(name = "SocketTypeAndNames", serializeUsing = JsonStringSerializer.class)
+    @JSONField(name = "SocketTypeAndNames",serializeUsing = JsonStringSerializer.class)
     private String socketTypeAndNames;
 }

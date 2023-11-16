@@ -1,6 +1,7 @@
 package com.mygame.game.mapper;
 
 import com.mygame.game.entity.PlayerEntity;
+import org.apache.ibatis.annotations.Mapper;
 
 public interface PlayerEntityMapper {
     int deleteByPrimaryKey(Long id);
