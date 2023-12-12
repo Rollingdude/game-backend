@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LogAspects {
     @Pointcut("execution(* com.mygame.game.controller..*.*(..))")
-    public void RequestParaLogPointCut() {
+    public void RequestParamLogPointCut() {
         //empty method declares a point cut
     }
 
-    @Before("RequestParaLogPointCut()")
+    @Before("RequestParamLogPointCut()")
     public void doPointCut(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         log.info("LogAspects logging request param:{}", JSON.toJSONString(args));

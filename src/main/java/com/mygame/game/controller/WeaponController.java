@@ -2,9 +2,7 @@ package com.mygame.game.controller;
 
 import com.mygame.game.api.IResponse;
 import com.mygame.game.api.Response;
-import com.mygame.game.model.vo.WeaponPartVO;
 import com.mygame.game.model.vo.WeaponVO;
-import com.mygame.game.service.WeaponPartService;
 import com.mygame.game.service.WeaponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
