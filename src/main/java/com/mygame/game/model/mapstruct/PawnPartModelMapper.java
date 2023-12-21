@@ -2,6 +2,7 @@ package com.mygame.game.model.mapstruct;
 
 import com.mygame.game.entity.PawnPartEntity;
 import com.mygame.game.model.vo.PawnPartVO;
+import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -10,6 +11,7 @@ import org.mapstruct.factory.Mappers;
  * @author Lynx
  * @since 2023/07/14
  */
+@Mapper
 public interface PawnPartModelMapper {
 
     PawnPartModelMapper INSTANCE = Mappers.getMapper(PawnPartModelMapper.class);
