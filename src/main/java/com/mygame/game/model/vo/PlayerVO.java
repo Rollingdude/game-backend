@@ -16,6 +16,7 @@ import java.math.RoundingMode;
 @Data
 public class PlayerVO implements Serializable {
 
+    private static final long serialVersionUID = -2001195483134855573L;
     /**
      * player id
      */

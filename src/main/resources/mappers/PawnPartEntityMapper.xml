@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mygame.game.mapper.PawnPartEntityMapper">
+  <resultMap id="BaseResultMap" type="com.mygame.game.entity.PawnPartEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <result column="mesh_type" jdbcType="VARCHAR" property="meshType" />
+    <result column="anim_data_path" jdbcType="VARCHAR" property="animDataPath" />
+    <result column="static_mesh_path" jdbcType="VARCHAR" property="staticMeshPath" />
+    <result column="skeletal_mesh_path" jdbcType="VARCHAR" property="skeletalMeshPath" />
+    <result column="avatar_actor_class_path" jdbcType="VARCHAR" property="avatarActorClassPath" />
+    <result column="anim_class_path" jdbcType="VARCHAR" property="animClassPath" />
+    <result column="icon_assets_path" jdbcType="VARCHAR" property="iconAssetsPath" />
+    <result column="pawn_part_type" jdbcType="VARCHAR" property="pawnPartType" />
+    <result column="socket_names" jdbcType="VARCHAR" property="socketNames" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="states" jdbcType="BIT" property="states" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_name, alias, item_type, mesh_type, anim_data_path, static_mesh_path, skeletal_mesh_path, 
+    avatar_actor_class_path, anim_class_path, icon_assets_path, pawn_part_type, socket_names, 
+    description, create_time, update_time, states
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_pawn_part
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_pawn_part
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mygame.game.entity.PawnPartEntity">
+    insert into tb_pawn_part (id, item_name, alias, 
+      item_type, mesh_type, anim_data_path, 
+      static_mesh_path, skeletal_mesh_path, avatar_actor_class_path, 
+      anim_class_path, icon_assets_path, pawn_part_type, 
+      socket_names, description, create_time, 
+      update_time, states)
+    values (#{id,jdbcType=INTEGER}, #{itemName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{itemType,jdbcType=VARCHAR}, #{meshType,jdbcType=VARCHAR}, #{animDataPath,jdbcType=VARCHAR}, 
+      #{staticMeshPath,jdbcType=VARCHAR}, #{skeletalMeshPath,jdbcType=VARCHAR}, #{avatarActorClassPath,jdbcType=VARCHAR}, 
+      #{animClassPath,jdbcType=VARCHAR}, #{iconAssetsPath,jdbcType=VARCHAR}, #{pawnPartType,jdbcType=VARCHAR}, 
+      #{socketNames,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT}, #{states,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mygame.game.entity.PawnPartEntity">
+    insert into tb_pawn_part
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="meshType != null">
+        mesh_type,
+      </if>
+      <if test="animDataPath != null">
+        anim_data_path,
+      </if>
+      <if test="staticMeshPath != null">
+        static_mesh_path,
+      </if>
+      <if test="skeletalMeshPath != null">
+        skeletal_mesh_path,
+      </if>
+      <if test="avatarActorClassPath != null">
+        avatar_actor_class_path,
+      </if>
+      <if test="animClassPath != null">
+        anim_class_path,
+      </if>
+      <if test="iconAssetsPath != null">
+        icon_assets_path,
+      </if>
+      <if test="pawnPartType != null">
+        pawn_part_type,
+      </if>
+      <if test="socketNames != null">
+        socket_names,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="states != null">
+        states,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null">
+        #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null">
+        #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null">
+        #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null">
+        #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null">
+        #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null">
+        #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null">
+        #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnPartType != null">
+        #{pawnPartType,jdbcType=VARCHAR},
+      </if>
+      <if test="socketNames != null">
+        #{socketNames,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="states != null">
+        #{states,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mygame.game.entity.PawnPartEntity">
+    update tb_pawn_part
+    <set>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="meshType != null">
+        mesh_type = #{meshType,jdbcType=VARCHAR},
+      </if>
+      <if test="animDataPath != null">
+        anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="staticMeshPath != null">
+        static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="skeletalMeshPath != null">
+        skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarActorClassPath != null">
+        avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="animClassPath != null">
+        anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      </if>
+      <if test="iconAssetsPath != null">
+        icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pawnPartType != null">
+        pawn_part_type = #{pawnPartType,jdbcType=VARCHAR},
+      </if>
+      <if test="socketNames != null">
+        socket_names = #{socketNames,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="states != null">
+        states = #{states,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mygame.game.entity.PawnPartEntity">
+    update tb_pawn_part
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      alias = #{alias,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      mesh_type = #{meshType,jdbcType=VARCHAR},
+      anim_data_path = #{animDataPath,jdbcType=VARCHAR},
+      static_mesh_path = #{staticMeshPath,jdbcType=VARCHAR},
+      skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      avatar_actor_class_path = #{avatarActorClassPath,jdbcType=VARCHAR},
+      anim_class_path = #{animClassPath,jdbcType=VARCHAR},
+      icon_assets_path = #{iconAssetsPath,jdbcType=VARCHAR},
+      pawn_part_type = #{pawnPartType,jdbcType=VARCHAR},
+      socket_names = #{socketNames,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      states = #{states,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mygame.game.entity.CharacterPartEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <result column="apply_type" jdbcType="TINYINT" property="applyType" />
+    <result column="skeletal_mesh_path" jdbcType="VARCHAR" property="skeletalMeshPath" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_name, item_type, apply_type, skeletal_mesh_path, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_character_part
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_character_part
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mygame.game.entity.CharacterPartEntity">
+    insert into tb_character_part (id, item_name, item_type, 
+      apply_type, skeletal_mesh_path, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
+      #{applyType,jdbcType=TINYINT}, #{skeletalMeshPath,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mygame.game.entity.CharacterPartEntity">
+    insert into tb_character_part
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="applyType != null">
+        apply_type,
+      </if>
+      <if test="skeletalMeshPath != null">
+        skeletal_mesh_path,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null">
+        #{applyType,jdbcType=TINYINT},
+      </if>
+      <if test="skeletalMeshPath != null">
+        #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mygame.game.entity.CharacterPartEntity">
+    update tb_character_part
+    <set>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null">
+        apply_type = #{applyType,jdbcType=TINYINT},
+      </if>
+      <if test="skeletalMeshPath != null">
+        skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mygame.game.entity.CharacterPartEntity">
+    update tb_character_part
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      apply_type = #{applyType,jdbcType=TINYINT},
+      skeletal_mesh_path = #{skeletalMeshPath,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
